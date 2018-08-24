@@ -67,6 +67,9 @@ class Qt(Package):
     variant('opengl',     default=False,
             description="Build with OpenGL support.")
 
+    variant('static',     default=False,
+            description="Build statically.")
+
     # fix installation of pkgconfig files
     # see https://github.com/Homebrew/homebrew-core/pull/5951
     patch('restore-pc-files.patch', when='@5.9: platform=darwin')
@@ -377,6 +380,12 @@ class Qt(Package):
             config_args.extend([
                 '-skip', 'webglplugin',
             ])
+
+        if '~static' in self.spec:
+            config_args.extend([
+                '-static',
+            ])
+            
 
         if self.version > Version('5.8'):
             # relies on a system installed wayland, i.e. no spack package yet
