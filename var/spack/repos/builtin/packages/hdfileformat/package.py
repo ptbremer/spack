@@ -33,15 +33,16 @@ class Hdfileformat(CMakePackage):
 
     variant('python', default=False, description='Build the python extension')
 
-    import_modules = ['hdff']
+    #import_modules = ['hdff']
   
     # FIXME: Add dependencies if required.
     extends('python',when='+python')
     depends_on('python', when='+python')
-    depends_on('py-numpy')
+    depends_on('py-numpy', when='+python')
     
     def cmake_args(self):
-        
+
+        args = []
         if '+python' in self.spec:
             args = ["-DENABLE_PYTHON=1"]
 
