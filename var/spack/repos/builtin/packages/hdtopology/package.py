@@ -29,7 +29,7 @@ class Hdtopology(CMakePackage):
     homepage = "https://bitbucket.org/cedmav/hdtopology/src/master/"
     git      = "git@bitbucket.org:cedmav/hdtopology.git"
 
-    version('0.0.2', commit='137535f')
+    version('0.0.3', commit='2358b92')
 
     variant('python', default=False, description='Build the python extension')
 
